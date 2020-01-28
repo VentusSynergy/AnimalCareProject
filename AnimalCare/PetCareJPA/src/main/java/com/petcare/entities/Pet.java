@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Pet {
 
@@ -23,6 +25,7 @@ public class Pet {
 
 	private String custody;
 
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
@@ -74,13 +77,7 @@ public class Pet {
 		this.custody = custody;
 	}
 
-	public User getUser() {
-		return user;
-	}
 
-	public void setUser(User user) {
-		this.user = user;
-	}
 
 	public String getSpecies() {
 		return species;
@@ -118,6 +115,7 @@ public class Pet {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((appt == null) ? 0 : appt.hashCode());
 		result = prime * result + ((breed == null) ? 0 : breed.hashCode());
 		result = prime * result + ((custody == null) ? 0 : custody.hashCode());
 		result = prime * result + (fixed ? 1231 : 1237);
@@ -139,6 +137,11 @@ public class Pet {
 		if (getClass() != obj.getClass())
 			return false;
 		Pet other = (Pet) obj;
+		if (appt == null) {
+			if (other.appt != null)
+				return false;
+		} else if (!appt.equals(other.appt))
+			return false;
 		if (breed == null) {
 			if (other.breed != null)
 				return false;
@@ -180,8 +183,24 @@ public class Pet {
 
 	@Override
 	public String toString() {
-		return "Pet [id=" + id + ", name=" + name + ", health=" + health + ", custody=" + custody + ", user=" + user
-				+ ", species=" + species + ", breed=" + breed + ", fixed=" + fixed + ", gender=" + gender + "]";
+		return "Pet [id=" + id + ", name=" + name + ", health=" + health + ", custody=" + custody + ", species="
+				+ species + ", breed=" + breed + ", fixed=" + fixed + ", gender=" + gender + ", appt=" + appt + "]";
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public List<Appointment> getAppt() {
+		return appt;
+	}
+
+	public void setAppt(List<Appointment> appt) {
+		this.appt = appt;
 	}
 
 }

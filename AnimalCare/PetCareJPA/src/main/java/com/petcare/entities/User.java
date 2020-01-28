@@ -24,11 +24,19 @@ public class User {
 
 	private String email;
 
+	private String password;
+	
+	private boolean enabled;
+	
+	private String role;
+	
+	private String phone;
+	
 	private String address;
 
-	private String role;
 
-	private String phone;
+
+
 
 	@OneToMany(mappedBy = "user")
 	private List<Pet> pets;
@@ -91,6 +99,37 @@ public class User {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public List<Pet> getPets() {
+		return pets;
+	}
+
+	public void setPets(List<Pet> pets) {
+		this.pets = pets;
+	}
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+				+ ", address=" + address + ", role=" + role + ", phone=" + phone + ", enabled=" + enabled
+				+ ", password=" + password + ", pets=" + pets + "]";
 	}
 
 }

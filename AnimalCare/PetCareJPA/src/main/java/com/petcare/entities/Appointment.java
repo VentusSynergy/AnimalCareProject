@@ -10,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class Appointment {
 
@@ -26,6 +29,7 @@ public class Appointment {
 
 	private String status;
 
+	@JsonIgnoreProperties({"user" , "appt"})
 	@ManyToOne
 	@JoinColumn(name = "pet_id")
 	private Pet pet;

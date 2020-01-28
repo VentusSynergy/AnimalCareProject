@@ -28,6 +28,8 @@ CREATE TABLE IF NOT EXISTS `user` (
   `address` VARCHAR(45) NOT NULL,
   `role` VARCHAR(45) NOT NULL DEFAULT 'patient',
   `phone` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(200) NOT NULL,
+  `enabled` TINYINT NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -108,12 +110,12 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `vetdb`;
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `address`, `role`, `phone`) VALUES (1, 'Kullen', 'Kee', 'admin@admin.gmail.com', '555 Railroad way', 'admin', '999-999-9999');
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `address`, `role`, `phone`) VALUES (2, 'Nelson', 'Fritt', 'Fritt.Nelson@gmail.com', '784 Founders Dr', 'staff', '999-999-9999');
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `address`, `role`, `phone`) VALUES (3, 'Jessica', 'Heilman', 'Heilman.Jessica@gmail.com', '3999 Elmers Ln', 'staff', '999-999-9999');
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `address`, `role`, `phone`) VALUES (4, 'Grant', 'Lynn', 'Lynn.Grant@gmail.com', '544 Grant Dr', 'staff', '999-999-9999');
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `address`, `role`, `phone`) VALUES (5, 'Max', 'Freeman', 'Freeman.Max@gmail.com', '999 Linter Ln', 'patient', '999-999-9999');
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `address`, `role`, `phone`) VALUES (6, 'Henry', 'Strait', 'Strait.Henry@gmail', '4898 Fernwood Pl', 'patient', '999-999-9999');
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `address`, `role`, `phone`, `password`, `enabled`) VALUES (1, 'Kullen', 'Kee', 'admin@admin.gmail.com', '555 Railroad way', 'admin', '999-999-9999', '$2a$10$KMIQ9vF8CXH7U2Nqn3wTV.dUq0EzW94gzEvT7yb6rx9fuyFyY6OSS', 1);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `address`, `role`, `phone`, `password`, `enabled`) VALUES (2, 'Nelson', 'Fritt', 'Fritt.Nelson@gmail.com', '784 Founders Dr', 'staff', '999-999-9999', '$2a$10$KMIQ9vF8CXH7U2Nqn3wTV.dUq0EzW94gzEvT7yb6rx9fuyFyY6OSS', 1);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `address`, `role`, `phone`, `password`, `enabled`) VALUES (3, 'Jessica', 'Heilman', 'Heilman.Jessica@gmail.com', '3999 Elmers Ln', 'staff', '999-999-9999', '$2a$10$KMIQ9vF8CXH7U2Nqn3wTV.dUq0EzW94gzEvT7yb6rx9fuyFyY6OSS', 1);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `address`, `role`, `phone`, `password`, `enabled`) VALUES (4, 'Grant', 'Lynn', 'Lynn.Grant@gmail.com', '544 Grant Dr', 'staff', '999-999-9999', '$2a$10$KMIQ9vF8CXH7U2Nqn3wTV.dUq0EzW94gzEvT7yb6rx9fuyFyY6OSS', 1);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `address`, `role`, `phone`, `password`, `enabled`) VALUES (5, 'Max', 'Freeman', 'Freeman.Max@gmail.com', '999 Linter Ln', 'patient', '999-999-9999', '$2a$10$KMIQ9vF8CXH7U2Nqn3wTV.dUq0EzW94gzEvT7yb6rx9fuyFyY6OSS', 1);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `address`, `role`, `phone`, `password`, `enabled`) VALUES (6, 'Henry', 'Strait', 'Strait.Henry@gmail', '4898 Fernwood Pl', 'patient', '999-999-9999', '$2a$10$KMIQ9vF8CXH7U2Nqn3wTV.dUq0EzW94gzEvT7yb6rx9fuyFyY6OSS', 1);
 
 COMMIT;
 
